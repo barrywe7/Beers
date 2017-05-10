@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.barryirvine.beerrecipes.viewmodel.BeerViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:foreground="?selectableItemBackground"
+        android:minHeight="?listPreferredItemHeight"
+        android:onClick="@{()->viewModel.onClick()}"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/key_line_half"
+        android:paddingEnd="@dimen/key_line"
+        android:paddingStart="@dimen/key_line"
+        android:paddingTop="@dimen/key_line_half">
+
+        <ImageView
+            android:id="@+id/thumbnail_image_view"
+            android:layout_width="@dimen/thumbnail_width"
+            android:layout_height="@dimen/thumbnail_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/key_line"
+            app:imageUrl="@{viewModel.imageUrl}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{viewModel.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.tagline}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.abv}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{viewModel.description}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
