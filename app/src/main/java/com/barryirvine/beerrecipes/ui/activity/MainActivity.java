@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements MainContracts.Vie
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ((App) getApplication()).getAppComponent().inject(this);
-        mPresenter.attachView(this);
         setSupportActionBar(binding.toolbar);
+        mPresenter.loadData();
     }
 
 
@@ -40,9 +40,15 @@ public class MainActivity extends AppCompatActivity implements MainContracts.Vie
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.loadData();
+    protected void onStart() {
+        super.onStart();
+        mPresenter.attachView(this);
+    }
+
+    @Override
+    protected void onStop() {
+        mPresenter.detachView();
+        super.onStop();
     }
 
     @Override
@@ -51,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements MainContracts.Vie
     }
 
     @Override
-    public void showError(String message) {
+    public void showError(final String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

@@ -17,5 +17,9 @@ public class DataBindingUtils {
                 .placeholder(R.drawable.ic_image_grey_24dp)
                 .centerInside()
                 .into(view);
+        //Prefetch large image to disk to speed up display
+        Picasso.with(view.getContext()).load(imageUrl).priority(Picasso.Priority.LOW).fetch();
+
     }
+
 }

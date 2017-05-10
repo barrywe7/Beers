@@ -65,8 +65,6 @@ public class NetModule {
 				.create(BeersAPI.class);
 	}
 
-	//TODO: Add API provider possibly replacing retrofit above
-
 	@Provides
 	@Singleton
 	OkHttp3Downloader provideOkHttp3Downloader(final OkHttpClient client) {

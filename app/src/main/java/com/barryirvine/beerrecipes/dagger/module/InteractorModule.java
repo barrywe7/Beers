@@ -14,7 +14,6 @@ import retrofit2.Retrofit;
 public class InteractorModule {
 	@Provides
 	@Singleton
-	//TODO: Possibly add mapper
 	InteractorContracts.BeerApi provideBeerData(final BeersAPI beersAPI) {
 		return new BeerData(beersAPI);
 	}

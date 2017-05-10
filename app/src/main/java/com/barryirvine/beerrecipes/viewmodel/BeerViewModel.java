@@ -6,6 +6,7 @@ import android.databinding.Bindable;
 import android.support.annotation.NonNull;
 
 import com.barryirvine.beerrecipes.model.Beer;
+import com.barryirvine.beerrecipes.ui.activity.BeerDetailsActivity;
 
 /**
  * View Model for {@link Beer} Remember to use the {@link Bindable} annotation for all getters and to do
@@ -49,5 +50,7 @@ public class BeerViewModel extends BaseObservable {
     }
 
     public void onClick() {
+        // Haven't worked out a safe way of passing the view from view model for use in the shared transitions yet
+        BeerDetailsActivity.start(mContext, mBeer, null);
     }
 }

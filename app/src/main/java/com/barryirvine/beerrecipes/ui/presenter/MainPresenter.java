@@ -24,6 +24,11 @@ public class MainPresenter implements MainContracts.Presenter {
     }
 
     @Override
+    public void detachView() {
+        mView = null;
+    }
+
+    @Override
     public void loadData() {
         mBeerApi.getBeers()
                 .subscribe(

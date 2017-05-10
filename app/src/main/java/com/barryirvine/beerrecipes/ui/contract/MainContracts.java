@@ -13,6 +13,8 @@ public interface MainContracts {
     interface Presenter {
         void attachView(final View view);
 
+        void detachView();
+
         void loadData();
     }
 }
